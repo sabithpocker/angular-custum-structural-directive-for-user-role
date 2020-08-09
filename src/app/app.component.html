@@ -1,0 +1,24 @@
+<mat-toolbar>
+  <span>Angular Custom Structural Directive Exmaple</span>
+  <span class="spacer"></span>
+  <mat-button-toggle-group
+    (change)="switchRole($event.value)"
+    name="userRole"
+    aria-label="User Role"
+    [value]="userRole | async"
+  >
+    <mat-button-toggle value="role-a">Role A</mat-button-toggle>
+    <mat-button-toggle value="role-b">Role B</mat-button-toggle>
+    <mat-button-toggle value="role-c">Role C</mat-button-toggle>
+  </mat-button-toggle-group>
+</mat-toolbar>
+<mat-card>Current User Role : {{ userRole | async }}</mat-card>
+<mat-card *appIfUserRoleIs="'role-a'"
+  >Contnet that can be seen by Role A</mat-card
+>
+<mat-card *appIfUserRoleIs="'role-b'"
+  >Contnet that can be seen by Role B</mat-card
+>
+<mat-card *appIfUserRoleIs="'role-c'"
+  >Contnet that can be seen by Role C</mat-card
+>
